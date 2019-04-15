@@ -1,0 +1,13 @@
+body{
+    background-image: url("../images/woodbg.png");
+    background-size: cover;
+  }
+  header{
+      color: white;
+      text-align: center;
+      font-size: 30px;
+  }
+  .container{
+    background-color: orangered;
+    text-align: center;
+  }
