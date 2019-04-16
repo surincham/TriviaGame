@@ -26,20 +26,21 @@ questions.forEach(
     }
 
     function showResults(){
-        var answerContainer = quizContainer.querySelectorAll('.answers');
+        var answerContainers = quizContainer.querySelectorAll('.answers');
         var correctAns = 0;
+        console.log(showResults);
 
         questions.forEach((currentQuestion, questionNumber) => {
-            var answerContainer = answerContainer[questionNumber];
+            var answerContainer = answerContainers[questionNumber];
             var selector = `input[name=question${questionNumber}]:checked`;
             var userAns = (answerContainer.querySelector(selector) || {}).value;
 
         if(userAns === currentQuestion.correctAnswer){
             correctAns++;
-            answerContainer[questionNumber].style.color = 'lightgreen';
+            answerContainers[questionNumber].style.color = 'green';
         }
         else{
-            answerContainer[questionNumber].style.color = 'red';
+            answerContainers[questionNumber].style.color = 'red';
         }
         });
     resultsContainer.innerHTML = correctAns + ' out of ' + questions.length;
@@ -126,15 +127,21 @@ questionaire();
 
 window.setTimeout(time,0);
 function time (){
-    alert ('You have one minute to complete this quiz!');
-    console.log ('You have one minute to complete this quiz!');
+    alert ('You have 90 seconds to complete this quiz!');
+    console.log ('You have 90 seconds to complete this quiz!');
 }
 
-window.setTimeout(timeOut, 60000);
+window.setTimeout(timeRemaining,80000);
+function timeRemaining (){
+    alert ('You have 10 seconds left!');
+    console.log ('You have 10 seconds left!');
+}
+
+window.setTimeout(timeOut, 90000);
 function timeOut (){
     alert ('Time has ran out! Here is the results!');
     console.log ('Time has ran out! Here is the results!');
-    submitButton(showResults);
+    showResults();
 }
 submitButton.addEventListener("click", showResults);
 
